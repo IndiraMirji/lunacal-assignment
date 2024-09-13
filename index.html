@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lunacal Assignment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="box1">
+        <span class="material-symbols-outlined">
+            help
+        </span>
+            
+        <div class="nav-bar">
+            <button class="button1">About Me</button>
+            <button class="button2">Experience</button>
+            <button class="button3">Recommended</button>
+        </div>
+    
+        <div id="display-area" class="display-area">
+            <div id="about-me" class="content-section">
+                <p>Hello! I'm Dave, your sales rep here from Salesforce. I've been working at this 
+                    awesome company for 3 years now.</p>
+                <p>I was born and raised in Albany, 
+                    NY & have been living in Santa Carla for the past 10 years with my wife Tiffany and my 4-year-old twin daughters - Emma and Ella. Both of them are just starting school, so my calendar is usually blocked between 9-10 AM.</p>
+            
+            </div>
+    
+        </div>
+            <div class="scroll-bar"></div>
+        </div>
+    </div>
+
+    <div class="small-box1">
+        <div class="div1"></div>
+        <div class="div2"></div>
+    </div>
+    <div class="small-box2">
+        <div class="div3"></div>
+        <div class="div4"></div>
+    </div>
+    <div class="small-box3">
+        <div class="div5"></div>
+        <div class="div6"></div>
+    </div>
+
+    <div class="box2">
+        <span class="material-symbols-outlined">
+            help
+        </span>
+        <div class="gallery">Gallery</div>
+
+
+
+
+        <div class="image">
+            <div class="images">
+                <img src="image 2.jfif">
+            </div>
+            <div class="images">
+                <img src="image 3.jfif">
+            </div>
+            <div class="images">
+                <img src="image 4.jfif">
+            </div>
+            <div class="images">
+                <img src="image1.avif">
+            </div>
+        </div>
+        <div class="add-image" onclick="document.getElementById('imageInput').click();">
+            <i class="fa fa-plus"></i> Add Image
+        </div>
+        <input type="file" id="imageInput" style="display: none;" />
+    </div>
+    
+    <div class="arrows">
+        <i class="fa-solid fa-arrow-left arrow-icon"></i>
+        <i class="fa-solid fa-arrow-right arrow-icon"></i>
+    </div>
+
+    <div class="small-box">
+        <div class="small-div"></div>
+        <div class="small-div"></div>
+    </div>
+    <div class="small-box">
+        <div class="small-div"></div>
+        <div class="small-div"></div>
+    </div>
+    <div class="small-box">
+        <div class="small-div"></div>
+        <div class="small-div"></div>
+    </div>
+
+    <script>
+        document.getElementById('imageInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'images'; 
+                    document.querySelector('.image').appendChild(img);
+                };
+                
+                reader.readAsDataURL(file);
+            }
+        });
+
+
+
+     
+        document.addEventListener('DOMContentLoaded', () => {
+            const displayArea = document.getElementById('display-area');
+
+            const aboutMeText = `
+                <p>Hello! I'm Dave, your sales rep here from Salesforce. I've been working at this awesome company for 3 years now.</p>
+                <p></p>
+                <p>I have 5 years of experience in sales and have been working at Salesforce for the past 3 years. I've been able to close 50 deals in the past 6 months, and I'm looking forward to closing more deals in the future.</p>
+            `;
+
+            const experienceText = `
+                <p>I've been working in sales for over 5 years. My focus has been on managing customer relationships and closing deals. I've successfully managed numerous projects and contributed to the growth of our sales team.</p>
+                <p>My recent projects include implementing new sales strategies, developing client relationships, and optimizing the sales pipeline.</p>
+            `;
+
+            const recommendedText = `
+                <p style="position:relative; bottom:20px; left:10px;"><strong>1. Salesforce CRM</strong></p>
+                <p style="position:relative; bottom:40px;left:10px;">Salesforce CRM is a customer relationship management software <br>that helps businesses manage their sales, marketing, and customer service activities.</p>
+                <p style="position:relative; bottom:40px;left:10px;"><strong>2. HubSpot CRM</strong></p>
+                <p style="position:relative; bottom:40px;left:10px;">HubSpot CRM is a free customer relationship management software that helps businesses manage their sales, marketing, and customer service activities.</p>
+                <p style="position:relative; bottom:40px;left:10px;"><strong>3. Zoho CRM</strong></p>
+                <p style="position:relative; bottom:40px;left:10px;">Zoho CRM is a customer relationship management software that helps businesses manage their sales, marketing, and customer service activities.</p>
+            `;
+
+            document.querySelector('.button1').addEventListener('click', () => {
+                displayArea.innerHTML = aboutMeText;
+            });
+
+            document.querySelector('.button2').addEventListener('click', () => {
+                displayArea.innerHTML = experienceText;
+            });
+
+            document.querySelector('.button3').addEventListener('click', () => {
+                displayArea.innerHTML = recommendedText;
+            });
+        });
+
+    </script>
+</body>
+</html>
